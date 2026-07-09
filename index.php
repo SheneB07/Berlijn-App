@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php include("connection.php");
+    try {
+    // Prepare the query to select the name and description
+    $stmt = $conn->prepare("SELECT activity_id, activity_name, information FROM activiteiten");
+    $stmt->execute();
+
+    // Set the fetch mode to associative array
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $activiteiten = $stmt->fetchAll();  // This stores the result in the variable you use below
+
+    
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+    ?>
     <header class="hero">
         <nav class="topbar">
             <div class="brand">Berlin Explorer</div>
@@ -92,9 +108,10 @@
                 <p class="eyebrow">Activiteiten</p>
                 <h2>Haal het meeste uit je bezoek.</h2>
             </div>
+            <?php foreach($activiteiten as $activities): ?>
             <div class="activity-grid">
                 <article class="activity-item">
-                    <h3>Bezoek de East Side Gallery</h3>
+                    <h3><?= htmlspecialchars($activities['activity_name']) ?></h3>
                     <p>Bekijk een van de meest kleurrijke en betekenisvolle muurschilderingen langs de rivier.</p>
                 </article>
                 <article class="activity-item">
@@ -110,6 +127,7 @@
                     <p>Gebruik de U-Bahn en fietspaden om de wijken op je eigen tempo te bekijken.</p>
                 </article>
             </div>
+            <?php endforeach ?>
         </section>
 
         <section id="tips" class="tips">
