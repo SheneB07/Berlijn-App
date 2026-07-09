@@ -112,7 +112,7 @@ $conn = null;
             <div class="activity-grid">
                 <article class="activity-item">
                     <h3><?= htmlspecialchars($activities['activity_name']) ?></h3>
-                    <p>Bekijk een van de meest kleurrijke en betekenisvolle muurschilderingen langs de rivier.</p>
+                    <p><?= htmlspecialchars($activities['information']) ?></p>
                 </article>
                 <article class="activity-item">
                     <h3>Ontspan in de Tiergarten</h3>
