@@ -1,8 +1,13 @@
 <?php
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "berlijn_app";
+
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "berlijn_app";
+$username = "u240660_berlijnapp";
+$password = "9gFx75YLrqEFNuxVXFS9";
+$dbname = "u240660_berlijnapp";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
